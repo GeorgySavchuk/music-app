@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from "../Sidebar/Sidebar.tsx";
 import styles from './Layout.module.css'
-import Modal from "../Modal/Modal.tsx";
+import Modal from "../UI/Modal/Modal.tsx"
 import {useAppSelector} from "../../hooks/redux.ts";
 interface LayoutProps {
     className?: string;

@@ -1,0 +1,9 @@
+.headerMainContent {
+    display: flex;
+    flex-direction: column;
+}
+.headerMainContent > h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #fff;
+}
