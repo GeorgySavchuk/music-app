@@ -1,14 +1,13 @@
 import React from 'react';
 import styles from './Registration.module.css';
 import {HiXMark} from "react-icons/hi2";
-import {useDispatch} from "react-redux";
 import {setModalContent, setModalVisibility} from "../../store/slices/modalSlice.ts";
 import Login from "../Login/Login.tsx";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import {auth} from "../../firebase/FirebaseInit.ts";
 import {createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import {setAuth, setLoading, setUser} from "../../store/slices/authSlice.ts";
-import {useAppSelector} from "../../hooks/redux.ts";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux.ts";
 import {PulseLoader} from "react-spinners";
 interface RegistrationFormValues {
     email: string;
@@ -31,7 +30,7 @@ const Registration: React.FC = () => {
             registrationError: ""
         }
     });
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch()
     const {isLoading} = useAppSelector(state => state.authReducer)
 
     const onClose = (): void => {

@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './Login.module.css'
 import {HiXMark} from "react-icons/hi2";
-import {useDispatch} from "react-redux";
 import {setModalContent, setModalVisibility} from "../../store/slices/modalSlice.ts";
 import Registration from "../Registration/Registration.tsx";
 import {Controller, SubmitHandler, useForm} from "react-hook-form";
-import {useAppSelector} from "../../hooks/redux.ts";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux.ts";
 import {setAuth, setLoading, setUser} from "../../store/slices/authSlice.ts";
 import {auth} from "../../firebase/FirebaseInit.ts";
 import {signInWithEmailAndPassword } from 'firebase/auth';
@@ -29,7 +28,7 @@ const Login : React.FC = () => {
             loginError: ""
         }
     });
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const {isLoading} = useAppSelector(state => state.authReducer)
     const onClose = (): void  => {
         dispatch(setModalVisibility(false))

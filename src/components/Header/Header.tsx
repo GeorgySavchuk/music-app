@@ -4,10 +4,9 @@ import {HiHome} from "react-icons/hi";
 import {BiSearch} from "react-icons/bi";
 import React from "react";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import Login from "../Login/Login.tsx";
 import {setModalContent, setModalVisibility} from "../../store/slices/modalSlice.ts";
-import {useAppSelector} from "../../hooks/redux.ts";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux.ts";
 import {auth} from "../../firebase/FirebaseInit.ts";
 import {signOut} from "firebase/auth";
 interface HeaderProps {
@@ -15,7 +14,7 @@ interface HeaderProps {
 }
 const Header: React.FC<HeaderProps> = ({children}) => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const {isAuth} = useAppSelector(state => state.authReducer)
     const handleLoginBtnClick = () : void  => {
         dispatch(setModalVisibility(true))

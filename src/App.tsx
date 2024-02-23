@@ -1,12 +1,23 @@
 import AppRouter from "./router/AppRouter.tsx";
-import {useDispatch} from "react-redux";
 import {useEffect} from "react";
 import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./firebase/FirebaseInit.ts";
 import {setAuth, setUser} from "./store/slices/authSlice.ts";
 import {IUser} from "./types/IUser.ts";
+import {useGetAccessTokenMutation} from "./services/MusicAppService.ts";
+import {useAppDispatch} from "./hooks/redux.ts";
+import {setAccessTokenInfo} from "./store/slices/spotifyAuthorizationSlice.ts";
+import {IAccessTokenInfo} from "./types/IAccessTokenInfo.ts";
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+  const [getAccessToken] = useGetAccessTokenMutation()
+  const fetchAccessToken = async () => {
+    const {data} : IAccessTokenInfo = await getAccessToken()
+    dispatch(setAccessTokenInfo({...data}))
+  }
+  useEffect(() => {
+    fetchAccessToken()
+  }, []);
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
