@@ -1,0 +1,29 @@
+.library {
+    display: flex;
+    flex-direction: column;
+}
+.libraryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem 0 1.25rem;
+}
+.title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(179, 179, 179);
+}
+.title > span {
+    color: rgb(179, 179, 179);
+    font-weight: 500;
+    font-size: 1rem;
+}
+.addBtn {
+    color: rgb(179, 179, 179);
+    transition: all .3s ease;
+    cursor: pointer;
+}
+.addBtn:hover {
+    color: #fff;
+}

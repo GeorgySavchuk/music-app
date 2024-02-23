@@ -1,0 +1,26 @@
+.linkLayout {
+    display: flex;
+    height: auto;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .3s ease;
+    padding: 0.25rem 0;
+    color: rgb(179, 179, 179);
+    text-decoration: none;
+}
+.linkLayout:hover {
+    color: #fff;
+}
+.active {
+    color: #fff;
+}
+.link {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}

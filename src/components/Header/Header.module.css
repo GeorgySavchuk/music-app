@@ -1,0 +1,70 @@
+.pageHeader {
+    width: 100%;
+    background: linear-gradient(rgb(6, 95, 60), #141414);
+    border-radius: .5rem;
+    padding: 1.5rem;
+}
+.headerBtns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.historyBtns{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+.historyBtns > button {
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    border: none;
+    padding: .25rem;
+}
+.historyBtns > button:hover {
+    opacity: .75;
+}
+.navBtns {
+    display: none;
+    align-items: center;
+    gap: .5rem;
+}
+.navBtns > button {
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .3s ease;
+    border: none;
+    padding: .25rem;
+}
+.navBtns > button:hover {
+    opacity: .75;
+}
+.loginBtn {
+    display: flex;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    background-color: #fff;
+    border-radius: 25px;
+    cursor: pointer;
+}
+.loginBtn > span {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+@media(max-width: 768px) {
+    .historyBtns {
+        display: none;
+    }
+    .navBtns {
+        display: flex;
+    }
+}
