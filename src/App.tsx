@@ -4,7 +4,7 @@ import {onAuthStateChanged } from "firebase/auth";
 import {auth} from "./firebase/FirebaseInit.ts";
 import {setAuth, setUser} from "./store/slices/authSlice.ts";
 import {IUser} from "./types/IUser.ts";
-import {useGetAccessTokenMutation} from "./services/MusicAppService.ts";
+import {useGetAccessTokenMutation} from "./services/MusicAppService/musicAppAuthorizationApi.ts";
 import {useAppDispatch} from "./hooks/redux.ts";
 import {setAccessTokenInfo} from "./store/slices/spotifyAuthorizationSlice.ts";
 import {IAccessTokenInfo} from "./types/IAccessTokenInfo.ts";

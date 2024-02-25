@@ -1,15 +1,6 @@
-import {createApi, EndpointBuilder, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IAccessTokenInfo} from "../types/IAccessTokenInfo.ts";
+import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
+import {IAccessTokenInfo} from "../../types/IAccessTokenInfo.ts";
 
-export const musicAppApi = createApi({
-    reducerPath: 'musicAppApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: 'https://api.spotify.com/'
-    }),
-    endpoints: (builder) => ({
-
-    })
-})
 export const musicAppAuthorizationApi = createApi({
     reducerPath: 'musicAppAuthorization',
     baseQuery: fetchBaseQuery({

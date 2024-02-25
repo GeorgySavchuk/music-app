@@ -1,5 +1,5 @@
 export interface IAccessTokenInfo {
-    accessToken: string;
-    tokenType: string;
-    expiresIn: number;
+    access_token: string;
+    token_type: string;
+    expires_In: number;
 }
