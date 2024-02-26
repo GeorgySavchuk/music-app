@@ -19,7 +19,7 @@ export const musicAppApi = createApi({
                 url: 'search',
                 params: {
                     q: input,
-                    type: 'artist'
+                    type: ['artist', 'track']
                 },
                 method: 'GET',
             }),

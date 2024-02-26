@@ -4,5 +4,16 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
+    row-gap: 1rem;
+}
+.notFound {
+    display: none;
+}
+.foundArtists, .foundTracks {
+    display: flex;
+    flex-direction: column;
     row-gap: .5rem;
+}
+.foundArtists > h3, .foundTracks > h3 {
+    margin: 0;
 }

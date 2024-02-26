@@ -14,7 +14,7 @@ const SearchInput : React.FC<SearchInputProps> = ({placeholder}) => {
     const [searchValue, setSearchValue] = useState<string>("")
     const dispatch = useAppDispatch()
     const debouncedSearchValue = useDebounce<string>(searchValue, 500)
-    const {data, isLoading, isFetching, isError} = useSearchQuery(debouncedSearchValue, {
+    const {data} = useSearchQuery(debouncedSearchValue, {
         skip: !debouncedSearchValue
     })
     useEffect(() => {

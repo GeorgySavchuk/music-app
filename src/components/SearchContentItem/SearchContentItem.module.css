@@ -39,11 +39,21 @@
     flex-direction: column;
     display: flex;
 }
-.songOrArtistInfo:first-child {
+.nameOrTitle {
     color: #fff;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0;
+}
+.artists {
+    color: rgb(163 163 163);
+    font-size: .875rem;
+    line-height: 1.25rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
 }
 .searchContentItem > button {
     cursor: pointer;
