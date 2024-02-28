@@ -1,0 +1,26 @@
+.sidebar {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--background-color);
+    min-width: 400px;
+    max-width: 400px;
+    max-height: 100vh;
+    margin-right: .5rem;
+}
+.sidebarLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 1rem 1.25rem;
+}
+.libraryLayout {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}

@@ -1,11 +1,11 @@
-import styles from './HomePage.module.css'
+import styles from './styles.module.css'
 import React from "react";
-import Layout from "../../components/Layout/Layout.tsx";
-import {getWelcomeMessage} from "../../utils/helpers/getWelcomeMessage.ts";
-import Header from "../../components/Header/Header.tsx";
-import {useAppSelector} from "../../hooks/redux.ts";
-import ListItem from "../../components/ListItem/ListItem.tsx";
 import likedSongs from '../../images/liked.png'
+import {getWelcomeMessage, useAppSelector} from "../../shared/lib";
+import {Layout} from "../../widgets/layouts/app-layout";
+import {Header} from "../../widgets/header";
+import {RecentlyVisitedItem} from "../../entities/recently-visited-item";
+import {RouteNames} from "../../shared/routing";
 const HomePage : React.FC = () => {
     const {user} = useAppSelector(state => state.authReducer)
     return (
@@ -15,7 +15,7 @@ const HomePage : React.FC = () => {
                     <h1>{getWelcomeMessage(user.userName)}</h1>
                 </div>
                 <div className={styles.listItems}>
-                    <ListItem name="Любимые треки" image={likedSongs} href="/"/>
+                    <RecentlyVisitedItem name={"Любимые треки"} image={likedSongs} href={RouteNames.HOME}/>
                 </div>
             </Header>
         </Layout>

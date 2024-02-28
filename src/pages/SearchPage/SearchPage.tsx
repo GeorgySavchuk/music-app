@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from "../../components/Header/Header.tsx";
-import Layout from "../../components/Layout/Layout.tsx";
-import styles from "../HomePage/HomePage.module.css";
-import SearchInput from "../../components/SearchInput/SearchInput.tsx";
-import Main from "../../components/Main/Main.tsx";
-import SearchContent from "../../components/SearchContent/SearchContent.tsx";
-import {useAppSelector} from "../../hooks/redux.ts";
+import styles from "./styles.module.css";
+import {Layout} from "../../widgets/layouts/app-layout";
+import {Header} from "../../widgets/header";
+import {SearchInput} from "../../features/search-input";
+import {Main} from "../../widgets/layouts/main-layout";
+import {SearchContent} from "../../widgets/search-content";
+import {useAppSelector} from "../../shared/lib";
 
 const SearchPage : React.FC = () => {
     const {searchResults, searchRequest} = useAppSelector(state => state.searchReducer)

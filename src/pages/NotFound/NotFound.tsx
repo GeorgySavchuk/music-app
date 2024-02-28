@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from "../../components/Header/Header.tsx";
-import styles from './NotFound.module.css'
+import styles from './styles.module.css'
 import notFoundImg from '../../images/404.png'
-import Layout from "../../components/Layout/Layout.tsx";
+import {Layout} from "../../widgets/layouts/app-layout";
+import {Header} from "../../widgets/header";
 const NotFound : React.FC = () => {
     return (
         <Layout className={styles.sidebar}>
