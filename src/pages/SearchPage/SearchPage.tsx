@@ -7,7 +7,7 @@ import {Main} from "../../widgets/layouts/main-layout";
 import {SearchContent} from "../../widgets/search-content";
 import {useAppSelector} from "../../shared/lib";
 
-const SearchPage : React.FC = () => {
+export const SearchPage : React.FC = () => {
     const {searchResults, searchRequest} = useAppSelector(state => state.searchReducer)
     return (
         <Layout>
@@ -23,5 +23,3 @@ const SearchPage : React.FC = () => {
         </Layout>
     );
 };
-
-export default SearchPage;

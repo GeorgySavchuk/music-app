@@ -1,17 +1,16 @@
 import React from "react";
 import {Route, Routes} from "react-router-dom";
-import NotFound from "../pages/NotFound/NotFound.tsx";
-import {ROUTES} from "../shared/routing";
+import {RouteNames} from "../shared/routing";
+import {HomePage} from "../pages/HomePage";
+import {SearchPage} from "../pages/SearchPage";
+import {NotFound} from "../pages/NotFound";
 
 export const AppRouter: React.FC = () => {
     return (
         <Routes>
-            {
-                ROUTES.map(route => (
-                    <Route key={route.path} path={route.path} element={route.element}/>
-                ))
-            }
-            <Route path="*" element={<NotFound/>}/>
+            <Route path={RouteNames.HOME} element={<HomePage/>}/>
+            <Route path={RouteNames.SEARCH} element={<SearchPage/>}/>
+            <Route path={RouteNames.NOT_FOUND} element={<NotFound/>}/>
         </Routes>
     );
 };

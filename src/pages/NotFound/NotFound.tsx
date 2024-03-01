@@ -3,7 +3,7 @@ import styles from './styles.module.css'
 import notFoundImg from '../../images/404.png'
 import {Layout} from "../../widgets/layouts/app-layout";
 import {Header} from "../../widgets/header";
-const NotFound : React.FC = () => {
+export const NotFound : React.FC = () => {
     return (
         <Layout className={styles.sidebar}>
             <Header/>
@@ -13,5 +13,3 @@ const NotFound : React.FC = () => {
         </Layout>
     );
 };
-
-export default NotFound;
