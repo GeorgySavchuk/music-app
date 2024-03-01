@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IAccessTokenInfo} from "../../../types/IAccessTokenInfo.ts";
+import {IAccessTokenInfo} from "../types.ts";
 
 export const musicAppAuthorizationApi = createApi({
     reducerPath: 'musicAppAuthorization',

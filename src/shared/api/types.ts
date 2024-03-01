@@ -1,12 +1,19 @@
 import React from "react";
+import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
+import {SerializedError} from "@reduxjs/toolkit";
 
 export interface IAccessTokenInfo {
     access_token: string;
     token_type: string;
     expires_In: number;
 }
-
-
+export interface AuthorizationNonErrorResponse {
+    data: IAccessTokenInfo;
+}
+export interface AuthorizationErrorResponse {
+    error: FetchBaseQueryError | SerializedError;
+}
+export type AuthorizationResponse = AuthorizationNonErrorResponse | AuthorizationErrorResponse
 export interface IAlbum {
     total_tracks: number;
     id: string;

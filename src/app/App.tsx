@@ -2,7 +2,10 @@ import {useEffect} from "react";
 import {onAuthStateChanged} from "firebase/auth";
 import {useAppDispatch} from "../shared/lib";
 import {useGetAccessTokenMutation} from "../shared/api";
-import {IAccessTokenInfo, IUser} from "../shared/api/types.ts";
+import {
+    AuthorizationResponse,
+    IUser
+} from "../shared/api/types.ts";
 import {setAccessTokenInfo, setAuth, setUser} from "../shared/model";
 import {auth} from "../shared/config";
 import {AppRouter} from "./AppRouter.tsx";
@@ -10,8 +13,12 @@ export const App = () => {
     const dispatch = useAppDispatch()
     const [getAccessToken] = useGetAccessTokenMutation()
     const fetchAccessToken = async () => {
-        const {data} : IAccessTokenInfo = await getAccessToken()
-        dispatch(setAccessTokenInfo({...data}))
+        const response: AuthorizationResponse  = await getAccessToken()
+        if ("data" in response) {
+            dispatch(setAccessTokenInfo({...response.data}))
+        } else {
+            console.log("Неправильный запрос!")
+        }
     }
     useEffect(() => {
         fetchAccessToken()

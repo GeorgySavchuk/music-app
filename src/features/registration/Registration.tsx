@@ -46,9 +46,11 @@ export const Registration: React.FC = () => {
         try{
             dispatch(setLoading(true))
             await createUserWithEmailAndPassword(auth, email, password)
-            await updateProfile(auth.currentUser, {
-                displayName: userName
-            })
+            if (auth.currentUser) {
+                await updateProfile(auth.currentUser, {
+                    displayName: userName
+                })
+            }
             dispatch(setUser({
                 userName,
                 email
