@@ -1,8 +1,8 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 
 export const getWelcomeMessage = (userName: string = "") : string => {
     const hour: number = dayjs().hour();
-    let welcomeMessage: string = '';
+    let welcomeMessage: string;
     if (hour > 5 && hour < 12) {
         welcomeMessage = `Доброе утро${userName && `,${userName}`}`
     } else if (hour >= 12 && hour < 18) {

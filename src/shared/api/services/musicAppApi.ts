@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {IAccessTokenInfo, ISearchResponse} from "../types.ts";
-import {RootState} from "../../model/store.ts";
+import {RootState} from "../../model";
 export const musicAppApi = createApi({
     reducerPath: 'musicAppApi',
     baseQuery: fetchBaseQuery({
@@ -21,7 +21,7 @@ export const musicAppApi = createApi({
                     type: ['artist', 'track', 'album']
                 },
                 method: 'GET',
-            }),
+            })
         })
     })
 })
