@@ -5,9 +5,12 @@ import {Filters, setSearchFilter} from "../../shared/model";
 
 export const SearchFilters : React.FC = () => {
     const dispatch = useAppDispatch()
-    const {searchFilter} = useAppSelector(state => state.searchReducer)
+    const {searchFilter, searchResults, searchRequest} = useAppSelector(state => state.searchReducer)
     const setFilter = (filter: Filters) => {
         dispatch(setSearchFilter(filter))
+    }
+    if (Object.keys(searchResults).length === 0 || !searchRequest) {
+        return null
     }
     return (
         <div className={styles.searchFilters}>

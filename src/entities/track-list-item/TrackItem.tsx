@@ -6,7 +6,7 @@ import {printArtists} from "../../shared/lib";
 interface SearchContentItemProps {
     content: ITrack;
 }
-export const TrackListItem : React.FC<SearchContentItemProps> = ({content}) => {
+export const TrackItem : React.FC<SearchContentItemProps> = ({content}) => {
     return (
         <div className={styles.searchContentItem}>
             <div className={styles.contentContainer}>

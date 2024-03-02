@@ -7,18 +7,25 @@ import {AlbumItem} from "../../entities/album-list-item";
 
 
 interface AlbumListProps {
-    albums: Omit<IAlbum, "tracks" | "label">[]
+    albums: Omit<IAlbum, "tracks" | "label">[];
+    searchRequest: string
 }
-export const AlbumList : React.FC<AlbumListProps> = ({albums}) => {
+export const AlbumList : React.FC<AlbumListProps> = ({albums, searchRequest}) => {
     const {searchFilter} = useAppSelector(state => state.searchReducer)
-    const filterAlbums = (albums: Omit<IAlbum, "tracks" | "label">[]) : Omit<IAlbum, "tracks" | "label">[] => {
-        return albums.filter(album => album.images.length !== 0)
+    if (albums.length === 0) {
+        return (
+            <div className={`${styles.badRequest} ${searchFilter !== Filters.ALBUMS ? styles.notVisible : ''}`}>
+                <span>{`По запросу «${searchRequest}» не найдено альбомов`}</span>
+            </div>
+        )
     }
     return (
-        <div className={`${styles.albums} ${albums.length === 0 || searchFilter !== Filters.ALBUMS ? styles.notVisible : ''}`}>
-            {filterAlbums(albums).map(album => (
-                <AlbumItem key={album.id} content={album}/>
-            ))}
+        <div className={`${styles.albums} ${searchFilter !== Filters.ALBUMS ? styles.notVisible : ''}`}>
+            {
+                albums.map(album => (
+                    <AlbumItem key={album.id} content={album}/>
+                ))
+            }
         </div>
     );
 };

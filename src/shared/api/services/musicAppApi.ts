@@ -21,7 +21,13 @@ export const musicAppApi = createApi({
                     type: ['artist', 'track', 'album']
                 },
                 method: 'GET',
-            })
+            }),
+            transformResponse: (response : ISearchResponse): ISearchResponse => {
+                response.artists.items = response.artists.items.filter(artist => artist.images.length !== 0)
+                response.tracks.items = response.tracks.items.filter(track => track.album.images.length !== 0 && track.explicit)
+                response.albums.items = response.albums.items.filter(album => album.images.length !== 0)
+                return response
+            }
         })
     })
 })

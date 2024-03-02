@@ -4,5 +4,9 @@
     gap: 1rem;
 }
 .notVisible {
-    display: none;
+    display: none !important;
+}
+.badRequest {
+    width: 100%;
+    height: 100%;
 }

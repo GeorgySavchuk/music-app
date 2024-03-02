@@ -9,19 +9,22 @@ import {Input} from "../../shared/ui";
 
 interface SearchInputProps {
     placeholder: string;
+    onLoadingChange: (loading: boolean) => void;
 }
-export const SearchInput : React.FC<SearchInputProps> = ({placeholder}) => {
+export const SearchInput : React.FC<SearchInputProps> = ({placeholder, onLoadingChange}) => {
     const [searchValue, setSearchValue] = useState<string>("")
     const dispatch = useAppDispatch()
     const debouncedSearchValue = useDebounce<string>(searchValue, 500)
-    const {data} = useSearchQuery(debouncedSearchValue, {
+    const {data, isLoading, isFetching} = useSearchQuery(debouncedSearchValue, {
         skip: !debouncedSearchValue
     })
     useEffect(() => {
-        console.log(data)
         dispatch(setSearchResults(data ?? {} as ISearchResponse))
         dispatch(setSearchRequest(debouncedSearchValue))
     }, [debouncedSearchValue, data]);
+    useEffect(() => {
+        onLoadingChange(isLoading || isFetching);
+    }, [isLoading, isFetching]);
     const handleInput = (e: FormEvent<HTMLInputElement>) => {
         setSearchValue(e.currentTarget.value)
     }

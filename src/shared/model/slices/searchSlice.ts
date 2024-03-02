@@ -15,7 +15,7 @@ interface SearchState {
 const initialState: SearchState = {
     searchResults: {} as ISearchResponse,
     searchRequest: '',
-    searchFilter: Filters.ARTISTS
+    searchFilter: Filters.ARTISTS,
 }
 const searchSlice = createSlice({
     name: 'search',

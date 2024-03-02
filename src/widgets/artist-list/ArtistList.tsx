@@ -7,17 +7,24 @@ import {ArtistItem} from "../../entities/artist-list-item";
 
 interface ArtistListProps {
     artists: IArtist[]
+    searchRequest: string
 }
-export const ArtistList : React.FC<ArtistListProps> = ({artists}) => {
+export const ArtistList : React.FC<ArtistListProps> = ({artists, searchRequest}) => {
     const {searchFilter} = useAppSelector(state => state.searchReducer)
-    const filterArtists = (artists: IArtist[]) : IArtist[] => {
-        return artists.filter(artist => artist.images.length !== 0)
+    if (artists.length === 0) {
+        return (
+            <div className={`${styles.badRequest} ${searchFilter !== Filters.ARTISTS ? styles.notVisible : ''}`}>
+                <span>{`По запросу «${searchRequest}» не найдено исполнителей`}</span>
+            </div>
+        )
     }
     return (
-        <div className={`${styles.artists} ${artists.length === 0 || searchFilter !== Filters.ARTISTS ? styles.notVisible : ''}`}>
-            {filterArtists(artists).map(artist => (
-                <ArtistItem key={artist.id} content={artist}/>
-            ))}
+        <div className={`${styles.artists} ${searchFilter !== Filters.ARTISTS ? styles.notVisible : ''}`}>
+            {
+                artists.map(artist => (
+                    <ArtistItem key={artist.id} content={artist}/>
+                ))
+            }
         </div>
     );
 };

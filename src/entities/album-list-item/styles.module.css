@@ -55,10 +55,17 @@
     width: 100%;
     margin: 0;
 }
+.albumDateAndArtists {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
 .playBtnContainer {
     position: absolute;
     right: 1.5rem;
-    bottom: 4rem;
+    bottom: 6rem;
 }
 .playBtn {
     position: relative;

@@ -1,1 +1,1 @@
-export {TrackListItem} from './TrackListItem.tsx'
+export {TrackItem} from './TrackItem.tsx'
