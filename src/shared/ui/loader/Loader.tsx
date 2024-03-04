@@ -1,10 +1,10 @@
 import React from 'react';
-import {CircularProgress} from "@mui/material";
 import styles from './styles.module.css'
+import {BounceLoader} from "react-spinners";
 export const Loader : React.FC = () => {
     return (
         <div className={styles.loader}>
-            <CircularProgress color={'inherit'} size={55}/>
+            <BounceLoader size={55} color={'rgb(6, 95, 60)'} speedMultiplier={1.2}/>
         </div>
     );
 };
