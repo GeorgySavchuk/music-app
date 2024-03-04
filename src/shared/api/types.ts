@@ -31,13 +31,17 @@ export interface IAlbums {
     items: Omit<IAlbum, "tracks" | "label">[];
 }
 
-
+export interface IFollowers {
+    href: string;
+    total: number;
+}
 export interface IArtist {
     images: IImage[];
     name: string;
     genres: string[];
     id: string;
     type: string;
+    followers: IFollowers;
 }
 
 
