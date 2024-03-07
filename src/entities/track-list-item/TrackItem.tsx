@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './styles.module.css'
 import {MdFavoriteBorder} from "react-icons/md";
 import {ITrack} from "../../shared/api/types.ts";
-import {printArtists} from "../../shared/lib";
+import {printArtists, printTrackDuration} from "../../shared/lib";
 import {FaPlay} from "react-icons/fa";
+import {IoTimeOutline} from "react-icons/io5";
 interface SearchContentItemProps {
     content: ITrack;
 }
@@ -23,9 +24,13 @@ export const TrackItem : React.FC<SearchContentItemProps> = ({content}) => {
                     <p className={styles.nameOrTitle}>{content.name}</p>
                     <p className={styles.artists}>{printArtists(content.artists)}</p>
                 </div>
+                <div className={styles.trackDuration}>
+                    <IoTimeOutline size={20}/>
+                    <p>{printTrackDuration(content.duration_ms)}</p>
+                </div>
             </div>
             <button>
-                <MdFavoriteBorder size={25} color={'#fff'}/>
+            <MdFavoriteBorder size={25} color={'#fff'}/>
             </button>
         </div>
     );

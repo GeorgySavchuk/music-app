@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IAccessTokenInfo, IArtist, ISearchResponse} from "../types.ts";
+import {IAccessTokenInfo, IAlbums, IArtist, IArtistPopularTracks, ISearchResponse} from "../types.ts";
 import {RootState} from "../../model";
 export const musicAppApi = createApi({
     reducerPath: 'musicAppApi',
@@ -34,7 +34,19 @@ export const musicAppApi = createApi({
                 url: `artists/${id}`,
                 method: 'GET'
             })
+        }),
+        getArtistTopTracks: builder.query<IArtistPopularTracks,string>({
+            query: (id: string) => ({
+                url: `artists/${id}/top-tracks`,
+                method: 'GET'
+            })
+        }),
+        getArtistAlbums: builder.query<IAlbums,string>({
+            query: (id: string) => ({
+                url: `albums/${id}/albums`,
+                method: 'GET'
+            })
         })
     })
 })
-export const {useSearchQuery, useGetArtistQuery} = musicAppApi
+export const {useSearchQuery, useGetArtistQuery, useGetArtistTopTracksQuery, useGetArtistAlbumsQuery} = musicAppApi

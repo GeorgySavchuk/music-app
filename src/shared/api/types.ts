@@ -79,7 +79,9 @@ export interface ITrack {
 export interface ITracks {
     items: ITrack[];
 }
-
+export interface IArtistPopularTracks {
+    tracks: ITrack[];
+}
 
 export interface IUser {
     userName: string;
