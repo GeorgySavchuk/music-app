@@ -1,0 +1,1 @@
+export {SearchArtistList} from './SearchArtistList.tsx'

@@ -3,13 +3,13 @@ import styles from "./styles.module.css";
 import {ITrack} from "../../shared/api/types.ts";
 import {useAppSelector} from "../../shared/lib";
 import {Filters} from "../../shared/model";
-import {TrackItem} from "../../entities/track-list-item";
+import {SearchTrackItem} from "../../entities/search-track-list-item";
 
 interface SearchContentTrackListProps {
     tracks: ITrack[];
     searchRequest: string
 }
-export const TrackList : React.FC<SearchContentTrackListProps> = ({tracks, searchRequest}) => {
+export const SearchTrackList : React.FC<SearchContentTrackListProps> = ({tracks, searchRequest}) => {
     const {searchFilter} = useAppSelector(state => state.searchReducer)
     if (tracks.length === 0) {
         return (
@@ -22,7 +22,7 @@ export const TrackList : React.FC<SearchContentTrackListProps> = ({tracks, searc
         <div className={`${styles.tracks} ${searchFilter !== Filters.TRACKS ? styles.notVisible : ''}`}>
             {
                 tracks.map(track => (
-                    <TrackItem key={track.id} content={track}/>
+                    <SearchTrackItem key={track.id} content={track}/>
                 ))
             }
         </div>

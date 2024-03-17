@@ -10,7 +10,7 @@ interface AlbumListProps {
     albums: Omit<IAlbum, "tracks" | "label">[];
     searchRequest: string
 }
-export const AlbumList : React.FC<AlbumListProps> = ({albums, searchRequest}) => {
+export const SearchAlbumList : React.FC<AlbumListProps> = ({albums, searchRequest}) => {
     const {searchFilter} = useAppSelector(state => state.searchReducer)
     if (albums.length === 0) {
         return (

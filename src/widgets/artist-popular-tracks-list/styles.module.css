@@ -1,0 +1,19 @@
+.popularTracks {
+    width: 100%;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+.popularTracks > h2 {
+    margin: 0;
+}
+.tracksList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: .5rem;
+}
+.column {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+}

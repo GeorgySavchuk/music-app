@@ -36,7 +36,7 @@
 .playBtn {
     position: absolute;
     transition: .3s ease;
-    opacity: 0;
+    transform: scale(0);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -48,8 +48,10 @@
     color: #000;
 }
 .listItemBtn:hover > .playBtn {
-    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.3s ease;
 }
 .playBtn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) !important;
+    transition: transform 0.3s ease;
 }

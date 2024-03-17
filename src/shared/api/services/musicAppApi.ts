@@ -5,7 +5,7 @@ export const musicAppApi = createApi({
     reducerPath: 'musicAppApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://api.spotify.com/v1/',
-        prepareHeaders: (headers, { getState }) => {
+        prepareHeaders: (headers, {getState}) => {
             const accessTokenInfo: IAccessTokenInfo = (getState() as RootState).spotifyAuthorizationReducer.accessTokenInfo
             headers.set('Content-Type', 'application/json');
             headers.set('Authorization', `${accessTokenInfo.token_type} ${accessTokenInfo.access_token}`);
@@ -20,7 +20,7 @@ export const musicAppApi = createApi({
                     q: input,
                     type: ['artist', 'track', 'album']
                 },
-                method: 'GET',
+                method: 'GET'
             }),
             transformResponse: (response : ISearchResponse): ISearchResponse => {
                 response.artists.items = response.artists.items.filter(artist => artist.images.length !== 0)
@@ -38,14 +38,25 @@ export const musicAppApi = createApi({
         getArtistTopTracks: builder.query<IArtistPopularTracks,string>({
             query: (id: string) => ({
                 url: `artists/${id}/top-tracks`,
-                method: 'GET'
+                method: 'GET',
+                params: {
+                    market: 'NL'
+                }
             })
         }),
         getArtistAlbums: builder.query<IAlbums,string>({
             query: (id: string) => ({
-                url: `albums/${id}/albums`,
-                method: 'GET'
-            })
+                url: `artists/${id}/albums`,
+                method: 'GET',
+                params: {
+                    market: 'NL',
+                    limit: 50
+                }
+            }),
+            transformResponse(response: IAlbums): IAlbums{
+                response.items = response.items.filter(album => album.images.length !== 0)
+                return response
+            }
         })
     })
 })

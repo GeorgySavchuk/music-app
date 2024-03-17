@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./styles.module.css";
 import {ISearchResponse} from "../../shared/api/types.ts";
-import {ArtistList} from "../artist-list";
-import {TrackList} from "../track-list";
-import {AlbumList} from "../album-list";
+import {SearchArtistList} from "../search-artist-list";
+import {SearchTrackList} from "../search-track-list";
+import {SearchAlbumList} from "../search-album-list";
 
 interface SearchContentProps {
     searchResults: ISearchResponse;
@@ -22,9 +22,9 @@ export const SearchContent : React.FC<SearchContentProps> = ({searchResults, sea
     }
     return (
         <div className={styles.searchContent}>
-            <ArtistList artists={searchResults.artists.items} searchRequest={searchRequest}/>
-            <TrackList tracks={searchResults.tracks.items} searchRequest={searchRequest}/>
-            <AlbumList albums={searchResults.albums.items} searchRequest={searchRequest}/>
+            <SearchArtistList artists={searchResults.artists.items} searchRequest={searchRequest}/>
+            <SearchTrackList tracks={searchResults.tracks.items} searchRequest={searchRequest}/>
+            <SearchAlbumList albums={searchResults.albums.items} searchRequest={searchRequest}/>
         </div>
     );
 };

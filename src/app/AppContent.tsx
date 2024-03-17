@@ -1,15 +1,18 @@
-import {useEffect} from "react";
-import {onAuthStateChanged} from "firebase/auth";
+import React, {useEffect} from 'react';
+import {Route, Routes} from "react-router-dom";
 import {useAppDispatch} from "../shared/lib";
 import {useGetAccessTokenMutation} from "../shared/api";
-import {
-    AuthorizationResponse,
-    IUser
-} from "../shared/api/types.ts";
+import {AuthorizationResponse, IUser} from "../shared/api/types.ts";
 import {setAccessTokenInfo, setAuth, setUser} from "../shared/model";
+import {RouteNames} from "../shared/routing";
+import {HomePage} from "../pages/HomePage";
+import {SearchPage} from "../pages/SearchPage";
+import {ArtistPage} from "../pages/ArtistPage";
+import {NotFound} from "../pages/NotFound";
+import {onAuthStateChanged} from "firebase/auth";
 import {auth} from "../shared/config";
-import {AppRouter} from "./AppRouter.tsx";
-export const App = () => {
+
+export const AppContent: React.FC = () => {
     const dispatch = useAppDispatch()
     const [getAccessToken] = useGetAccessTokenMutation()
     const fetchAccessToken = async () => {
@@ -38,6 +41,11 @@ export const App = () => {
         })
     }, [auth]);
     return (
-        <AppRouter/>
-    )
-}
+        <Routes>
+            <Route path={RouteNames.HOME} element={<HomePage/>}/>
+            <Route path={RouteNames.SEARCH} element={<SearchPage/>}/>
+            <Route path={RouteNames.ARTIST} element={<ArtistPage/>}/>
+            <Route path={RouteNames.NOT_FOUND} element={<NotFound/>}/>
+        </Routes>
+    );
+};

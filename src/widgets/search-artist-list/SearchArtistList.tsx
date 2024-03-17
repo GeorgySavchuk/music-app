@@ -9,7 +9,7 @@ interface ArtistListProps {
     artists: IArtist[]
     searchRequest: string
 }
-export const ArtistList : React.FC<ArtistListProps> = ({artists, searchRequest}) => {
+export const SearchArtistList : React.FC<ArtistListProps> = ({artists, searchRequest}) => {
     const {searchFilter} = useAppSelector(state => state.searchReducer)
     if (artists.length === 0) {
         return (
